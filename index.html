@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Shahadath Hossain - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #2c3e50; /* Dark blue */
+            color: #ecf0f1; /* Light grey */
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 5px solid #3498db; /* Blue accent */
+        }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 1.5px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #34495e; /* Slightly lighter dark blue */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #3498db; /* Blue */
+        }
+
+        /* Section Styling */
+        section {
+            background-color: #ffffff;
+            margin-top: 20px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Skills List */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+        .skills-grid span {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #34495e;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Project Cards */
+        .project-card {
+            background-color: #fdfefe;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+        .project-card h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .project-card a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-top: 5px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Md Shahadath Hossain</h1>
+            <p>An enthusiastic Python and Django Developer</p>
+            <p>Chattogram, Bangladesh</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate software developer, focused on creating efficient and user-friendly applications. I have a strong command of Python and the Django framework. I'm always eager to learn and take on new challenges. While my primary focus is backend development, I also have a solid understanding of frontend technologies.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <span>Python</span>
+                <span>Django</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Bootstrap 5</span>
+                <span>Git & GitHub</span>
+                <span>SQL (SQLite)</span>
+                <span>REST APIs</span>
+                <span>C Programming</span>
+                <span>Graphics Design (Basic)</span>
+                <span>Microsoft Office (Word, Excel, PowerPoint)</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-card">
+                <h3>Edubridge - Online Learning Platform</h3>
+                <p>A fully functional online learning platform built using Django. It features user authentication, course management, and enrollment functionalities.</p>
+                <p><strong>Technologies:</strong> Python, Django, HTML5, CSS3, JavaScript, SQLite</p>
+                <p><a href="https://github.com/mdshahadathossainit/edubridge-project.git" target="_blank">View on GitHub</a></p>
+            </div>
+            <div class="project-card">
+                <h3>Other Projects (Coming Soon!)</h3>
+                <p>I am currently working on a few other exciting projects. Details will be available here soon.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p>Feel free to get in touch with me:</p>
+                <p><strong>Email:</strong> <a href="mailto:m.shahadat.hossain.it@gmail.com">m.shahadat.hossain.it@gmail.com</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/mdshahadathossainit" target="_blank">mdshahadathossainit</a></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Md Shahadath Hossain. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
