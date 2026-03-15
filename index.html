@@ -61,8 +61,6 @@
             transition: all 0.3s ease;
         }
 
-        [data-theme="cyber"] body { font-family: 'JetBrains Mono', monospace; }
-
         header {
             background: var(--primary-gradient);
             color: #fff;
@@ -71,8 +69,6 @@
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
-
-        [data-theme="cyber"] header { clip-path: none; border-bottom: 2px solid #00ff41; }
 
         .profile-img {
             width: 180px;
@@ -88,19 +84,19 @@
             font-family: 'Montserrat', sans-serif;
             margin: 10px 0;
             font-size: 3.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .theme-panel {
             position: fixed; top: 20px; right: 20px; z-index: 2000;
             background: var(--card-bg); padding: 5px; border-radius: 50px;
             display: flex; gap: 5px; border: 1px solid var(--border-color);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+
         .theme-btn {
             width: 35px; height: 35px; border-radius: 50%; border: none; cursor: pointer;
             display: flex; align-items: center; justify-content: center; color: var(--text-main); background: transparent;
         }
+
         .theme-btn.active { background: var(--secondary-gradient); color: #fff; }
 
         nav {
@@ -111,31 +107,19 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a {
             color: #fff; text-decoration: none; padding: 8px 15px; margin: 0 5px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s; border-bottom: 2px solid transparent; font-size: 0.9em;
+            font-weight: 700; text-transform: uppercase; font-size: 0.9em;
         }
-        nav a:hover { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         section {
             background: var(--card-bg); margin-bottom: 60px; padding: 50px;
             border-radius: 20px; border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); animation: fadeIn 1s ease-out;
-        }
-
-        section h2 {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.2em; margin-bottom: 30px;
-            display: inline-block; border-bottom: 3px solid #6a11cb;
+            animation: fadeIn 1s ease-out;
         }
 
         .skills-grid {
@@ -145,37 +129,18 @@
         .skills-grid span {
             background: var(--card-bg); padding: 15px; border-radius: 12px;
             font-weight: 700; text-align: center; border: 2px solid var(--border-color);
-            transition: all 0.3s ease; color: var(--text-main);
-        }
-
-        .projects-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
         }
 
         .project-card {
             background: var(--card-bg); border-radius: 15px; padding: 30px;
-            border: 1px solid var(--border-color); position: relative;
-            transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between;
-        }
-
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-
-        .tech-tags {
-            font-size: 0.8em; color: #667eea; font-weight: bold; margin: 15px 0;
-            background: rgba(102, 126, 234, 0.1); padding: 5px 10px; border-radius: 5px; display: inline-block;
-        }
-
-        .project-links a {
-            display: inline-block; margin-right: 10px; text-decoration: none; color: #fff;
-            background: var(--secondary-gradient); padding: 8px 18px; border-radius: 25px;
-            font-size: 0.85em;
+            border: 1px solid var(--border-color); margin-bottom: 20px;
         }
 
         .ai-fab {
             position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
             border-radius: 50%; background: var(--secondary-gradient); color: white;
             border: none; cursor: pointer; z-index: 2000; display: flex;
-            align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            align-items: center; justify-content: center;
         }
 
         .chat-box {
@@ -185,7 +150,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden;
         }
 
-        .chat-header { padding: 15px; background: var(--primary-gradient); color: white; font-weight: 700; display: flex; justify-content: space-between; }
+        .chat-header { padding: 15px; background: var(--primary-gradient); color: white; display: flex; justify-content: space-between; }
         .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .chat-input-area { padding: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 10px; }
         .chat-input-area input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); }
@@ -195,15 +160,7 @@
         .msg.bot { background: var(--bg-color); align-self: flex-start; }
         .msg.user { background: var(--primary-gradient); color: white; align-self: flex-end; }
 
-        footer {
-            background: #1a1c3d; color: #dff9fb; text-align: center; padding: 60px 0 30px 0;
-            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2em; }
-            .chat-box { width: calc(100% - 60px); }
-        }
+        footer { background: #1a1c3d; color: #dff9fb; text-align: center; padding: 40px 0; }
     </style>
 </head>
 <body data-theme="modern">
@@ -217,14 +174,14 @@
     <button class="ai-fab" onclick="toggleChat()"><i data-lucide="sparkles"></i></button>
     <div class="chat-box" id="aiChat">
         <div class="chat-header">
-            <span>✨ Md Shahadat Hossain's Assistant</span>
+            <span>✨ Md Shahadat Hossain AI</span>
             <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">Hi! I am Md Shahadat Hossain's AI assistant. How can I help you today?</div>
+            <div class="msg bot">Hello! How can I assist you with Md Shahadat Hossain's portfolio?</div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Ask about projects..." onkeypress="if(event.key==='Enter') sendPrompt()">
+            <input type="text" id="chatInput" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendPrompt()">
             <button onclick="sendPrompt()"><i data-lucide="send"></i></button>
         </div>
     </div>
@@ -233,7 +190,7 @@
         <div class="container">
             <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadat Hossain" class="profile-img">
             <h1>Md Shahadat Hossain</h1>
-            <p>Software Engineer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast</p>
+            <p>Software Engineer | Full-Stack Developer | AI Enthusiast</p>
         </div>
     </header>
 
@@ -242,58 +199,39 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
     </nav>
 
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>Hello! I’m <strong>Md Shahadat Hossain</strong>, a dedicated <strong>Software Engineer</strong> specializing in <strong>Python (Django)</strong>, <strong>React</strong>, and <strong>AI/ML</strong>. I am currently developing <strong>Vim-DR</strong>, a high-resolution Vision Mamba architecture for medical diagnostics.</p>
+            <p>I am <strong>Md Shahadat Hossain</strong>, specializing in Python, Django, and Machine Learning.</p>
         </section>
 
         <section id="skills">
-            <h2>Strategic Tech Stack</h2>
+            <h2>Skills</h2>
             <div class="skills-grid">
-                <span>Python</span><span>Django</span><span>React.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Machine Learning</span><span>OpenCV</span><span>Docker</span>
+                <span>Python</span><span>Django</span><span>React</span><span>AI/ML</span><span>PostgreSQL</span><span>Docker</span>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Full-Stack E-Commerce</h3>
-                    <p>Modern scalable platform with secure JWT authentication.</p>
-                    <div class="tech-tags">Django REST • React</div>
-                    <div class="project-links">
-                        <a href="https://github.com/mdshahadathossainit/E-Commerce.git" target="_blank">Code</a>
-                        <a href="https://e-commerce-drab-iota-38.vercel.app/" target="_blank">Live Demo</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Vim-DR (Medical AI)</h3>
-                    <p>Vision Mamba architecture for Diabetic Retinopathy grading.</p>
-                    <div class="tech-tags">PyTorch • Vision Mamba</div>
-                </div>
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Vim-DR (Medical AI)</h3>
+                <p>Vision Mamba for Diabetic Retinopathy.</p>
             </div>
-        </section>
-
-        <section id="contact" style="text-align: center;">
-            <h2>Let's Connect</h2>
-            <p>Email: m.shahadat.hossain.it@gmail.com</p>
-            <a href="https://limewire.com/d/BTVD4#vLPsZNeRp9" class="btn-main" style="display:inline-block; padding: 15px 30px; background: var(--primary-gradient); color: #fff; border-radius: 50px; text-decoration: none;">Download Resume</a>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Md Shahadat Hossain. Built with Passion.</p>
+        <p>&copy; 2026 Md Shahadat Hossain</p>
     </footer>
 
     <script>
         lucide.createIcons();
 
-        function setTheme(themeName, btn) {
-            document.body.setAttribute('data-theme', themeName);
+        function setTheme(theme, btn) {
+            document.body.setAttribute('data-theme', theme);
             document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
@@ -303,20 +241,15 @@
             chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        // --- FIXED AI LOGIC ---
-        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; 
+        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0";
         const chatInput = document.getElementById('chatInput');
         const chatMessages = document.getElementById('chatMessages');
 
-        async function callGemini(userInput) {
-            // Using v1 Endpoint which is more stable for flash models
+        async function callGemini(input) {
             const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-            
-            const systemContext = "You are the AI Assistant for Md Shahadat Hossain, a Software Engineer. Skills: Python, Django, AI/ML. Respond professionally and concisely.";
-            
             const payload = {
                 contents: [{
-                    parts: [{ text: `${systemContext}\nUser: ${userInput}` }]
+                    parts: [{ text: `You are the AI for Md Shahadat Hossain. Answer professionally. User: ${input}` }]
                 }]
             };
 
@@ -326,44 +259,31 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                
                 const data = await response.json();
-                
-                if (!response.ok) {
-                    // API Restriction check
-                    if (data.error?.status === "PERMISSION_DENIED") {
-                        return "Error: API Key restriction active. Please check your Google Cloud settings.";
-                    }
-                    throw new Error(data.error?.message || "API Error");
-                }
-                
+                if (!response.ok) return "API Error: Ensure you are running from a permitted domain.";
                 return data.candidates[0].content.parts[0].text;
-            } catch (error) {
-                console.error("Gemini Error:", error);
-                return "I'm having trouble connecting. Ensure the API is enabled and your domain is allowed.";
+            } catch (e) {
+                return "Connection error. Check your internet.";
             }
         }
 
         async function sendPrompt() {
-            const text = chatInput.value.trim();
-            if (!text) return;
+            const val = chatInput.value.trim();
+            if (!val) return;
 
-            addMessage(text, 'user');
+            addMessage(val, 'user');
             chatInput.value = '';
 
-            const thinkingDiv = document.createElement('div');
-            thinkingDiv.className = 'msg bot';
-            thinkingDiv.innerText = 'Thinking...';
-            thinkingDiv.id = 'thinking-indicator';
-            chatMessages.appendChild(thinkingDiv);
+            const think = document.createElement('div');
+            think.className = 'msg bot';
+            think.innerText = 'Thinking...';
+            think.id = 'temp-msg';
+            chatMessages.appendChild(think);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            const response = await callGemini(text);
-            
-            const indicator = document.getElementById('thinking-indicator');
-            if (indicator) indicator.remove();
-            
-            addMessage(response, 'bot');
+            const res = await callGemini(val);
+            document.getElementById('temp-msg').remove();
+            addMessage(res, 'bot');
         }
 
         function addMessage(text, role) {
