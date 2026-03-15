@@ -265,7 +265,7 @@
             <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">আসসালামু আলাইকুম! আমি শাহাদাতের AI সহকারী। তার ক্যারিয়ার বা প্রজেক্ট নিয়ে কোনো প্রশ্ন আছে?</div>
+            <div class="msg bot">Hi! I am Shahadath's AI assistant. Do you have any questions about his career or projects?</div>
         </div>
         <div class="chat-input-area">
             <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendPrompt()">
@@ -433,7 +433,7 @@
             const systemPrompt = "You are the AI Assistant for Md Shahadath Hossain, a Software Engineer. " + 
                                "His skills: Python, Django, React, AI/ML, Vision Mamba (Medical AI). " +
                                "His projects: Vim-DR, Full-Stack E-Commerce, Nexus-AI, Research Hub, EduBridge LMS. " +
-                               "Respond professionally and concisely in a mix of Bengali and English as appropriate.";
+                               "Respond professionally and concisely in English only.";
             
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
@@ -452,7 +452,7 @@
                     const data = await response.json();
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm having trouble thinking right now.";
                 } catch (e) {
-                    if (i === 4) return "Connection issue. Please try again later.";
+                    if (i === 4) return "Something went wrong with the connection. Please try again in a few moments.";
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 }
