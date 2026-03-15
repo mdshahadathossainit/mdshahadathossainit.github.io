@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD SHAHADAT HOSSAIN - Portfolio</title>
+    <title>Md Shahadat Hossain - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -18,7 +17,6 @@
             --border-color: #eef2f7;
         }
 
-        /* Night/OLED Theme */
         [data-theme="night"] {
             --bg-color: #020617;
             --text-main: #f8fafc;
@@ -26,7 +24,6 @@
             --border-color: #1e293b;
         }
 
-        /* Cyber/Hacker Theme */
         [data-theme="cyber"] {
             --bg-color: #000000;
             --text-main: #00ff41;
@@ -41,7 +38,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Morphing Blob Animation --- */
         @keyframes morph {
             0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
             50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
@@ -95,15 +91,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        header p {
-            font-size: 1.3em;
-            font-weight: 300;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* --- Theme Switcher --- */
         .theme-panel {
             position: fixed; top: 20px; right: 20px; z-index: 2000;
             background: var(--card-bg); padding: 5px; border-radius: 50px;
@@ -158,12 +145,7 @@
         .skills-grid span {
             background: var(--card-bg); padding: 15px; border-radius: 12px;
             font-weight: 700; text-align: center; border: 2px solid var(--border-color);
-            transition: all 0.3s ease; color: var(--text-main); cursor: default;
-        }
-
-        .skills-grid span:hover {
-            border-color: #764ba2; color: #764ba2; transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.1);
+            transition: all 0.3s ease; color: var(--text-main);
         }
 
         .projects-container {
@@ -176,15 +158,7 @@
             transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        .project-card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: var(--secondary-gradient);
-        }
-
         .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-
-        .project-card h3 { color: #4834d4; margin-top: 0; font-size: 1.4em; }
-        [data-theme="cyber"] .project-card h3 { color: #00ff41; }
 
         .tech-tags {
             font-size: 0.8em; color: #667eea; font-weight: bold; margin: 15px 0;
@@ -194,27 +168,15 @@
         .project-links a {
             display: inline-block; margin-right: 10px; text-decoration: none; color: #fff;
             background: var(--secondary-gradient); padding: 8px 18px; border-radius: 25px;
-            font-size: 0.85em; transition: 0.3s;
+            font-size: 0.85em;
         }
 
-        .contact-info { text-align: center; }
-        
-        .btn-main {
-            display: inline-block; padding: 15px 40px; background: var(--primary-gradient);
-            color: #fff; border-radius: 50px; text-decoration: none; font-weight: bold;
-            font-size: 1.1em; box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
-            transition: 0.3s; margin-top: 20px;
-        }
-
-        /* --- ✨ AI Chat Assistant UI --- */
         .ai-fab {
             position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
             border-radius: 50%; background: var(--secondary-gradient); color: white;
             border: none; cursor: pointer; z-index: 2000; display: flex;
             align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: 0.3s;
         }
-        .ai-fab:hover { transform: scale(1.1); }
 
         .chat-box {
             position: fixed; bottom: 100px; left: 30px; width: 350px; height: 450px;
@@ -240,43 +202,37 @@
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.2em; }
-            header { padding: 60px 0 100px 0; }
-            section { padding: 25px; }
-            .projects-container { grid-template-columns: 1fr; }
-            nav a { padding: 8px 10px; font-size: 0.8em; }
             .chat-box { width: calc(100% - 60px); }
         }
     </style>
 </head>
 <body data-theme="modern">
 
-    <!-- Theme Panel -->
     <div class="theme-panel">
-        <button class="theme-btn active" onclick="setTheme('modern', this)" title="Modern"><i data-lucide="palette"></i></button>
-        <button class="theme-btn" onclick="setTheme('night', this)" title="Night"><i data-lucide="moon"></i></button>
-        <button class="theme-btn" onclick="setTheme('cyber', this)" title="Cyber"><i data-lucide="terminal"></i></button>
+        <button class="theme-btn active" onclick="setTheme('modern', this)"><i data-lucide="palette"></i></button>
+        <button class="theme-btn" onclick="setTheme('night', this)"><i data-lucide="moon"></i></button>
+        <button class="theme-btn" onclick="setTheme('cyber', this)"><i data-lucide="terminal"></i></button>
     </div>
 
-    <!-- AI FAB -->
     <button class="ai-fab" onclick="toggleChat()"><i data-lucide="sparkles"></i></button>
     <div class="chat-box" id="aiChat">
         <div class="chat-header">
-            <span>✨ MD SHAHADAT HOSSAIN's Assistant</span>
+            <span>✨ Md Shahadat Hossain's Assistant</span>
             <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">Hi! I am MD SHAHADAT HOSSAIN's AI assistant. Do you have any questions about his career or projects?</div>
+            <div class="msg bot">Hi! I am Md Shahadat Hossain's AI assistant. How can I help you today?</div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendPrompt()">
+            <input type="text" id="chatInput" placeholder="Ask about projects..." onkeypress="if(event.key==='Enter') sendPrompt()">
             <button onclick="sendPrompt()"><i data-lucide="send"></i></button>
         </div>
     </div>
 
     <header id="home">
         <div class="container">
-            <img src="https://imgur.com/QJ2DFKH.jpg" alt="MD SHAHADAT HOSSAIN" class="profile-img" loading="lazy">
-            <h1>MD SHAHADAT HOSSAIN</h1>
+            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadat Hossain" class="profile-img">
+            <h1>Md Shahadat Hossain</h1>
             <p>Software Engineer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast</p>
         </div>
     </header>
@@ -290,184 +246,89 @@
     </nav>
 
     <div class="container">
-        
         <section id="about">
             <h2>About Me</h2>
-            <div class="about-content">
-                <p style="font-size: 1.1em; color: var(--text-main);">
-                    Hello! I’m <strong>MD SHAHADAT HOSSAIN</strong>, a dedicated <strong>Software Engineer</strong> and <strong>Full-Stack Developer</strong> with a passion for <strong>AI/ML & Computer Vision</strong>. 
-                    I specialize in architecting high-performance web applications using the <strong>Python (Django, FastAPI)</strong> and <strong>React</strong> ecosystem.
-                </p>
-                <p style="font-size: 1.1em; color: var(--text-main);">
-                    Currently, I am working on my thesis <strong>Vim-DR</strong>, focusing on Vision Mamba architecture for efficient Diabetic Retinopathy grading. I combine my technical skills with <strong>Graphics Design</strong> experience to create software that is both powerful and visually compelling.
-                </p>
-            </div>
+            <p>Hello! I’m <strong>Md Shahadat Hossain</strong>, a dedicated <strong>Software Engineer</strong> specializing in <strong>Python (Django)</strong>, <strong>React</strong>, and <strong>AI/ML</strong>. I am currently developing <strong>Vim-DR</strong>, a high-resolution Vision Mamba architecture for medical diagnostics.</p>
         </section>
 
         <section id="skills">
             <h2>Strategic Tech Stack</h2>
             <div class="skills-grid">
-                <span title="Languages">Python</span>
-                <span title="Languages">JavaScript (ES6+)</span>
-                <span title="Languages">C Programming</span>
-                <span title="Backend">Django & DRF</span>
-                <span title="Backend">FastAPI</span>
-                <span title="Frontend">React.js</span>
-                <span title="Frontend">Tailwind CSS</span>
-                <span title="Databases">PostgreSQL</span>
-                <span title="DevOps">Docker</span>
-                <span title="Tools">Git & GitHub</span>
-                <span title="AI/ML">Machine Learning</span>
-                <span title="Computer Vision">OpenCV</span>
-                <span title="Deep Learning">TensorFlow</span>
+                <span>Python</span><span>Django</span><span>React.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Machine Learning</span><span>OpenCV</span><span>Docker</span>
             </div>
         </section>
 
         <section id="projects">
             <h2>Featured Projects</h2>
             <div class="projects-container">
-                
                 <div class="project-card">
-                    <div>
-                        <h3>Full-Stack E-Commerce</h3>
-                        <p>Modern scalable platform with secure JWT authentication, real-time cart, and order tracking.</p>
-                        <div class="tech-tags">Django REST • React • PostgreSQL</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/mdshahadathossainit/E-Commerce.git" target="_blank">Code</a>
-                        <a href="https://e-commerce-drab-iota-38.vercel.app/" target="_blank">Live Demo</a>
-                    </div>
+                    <h3>Full-Stack E-Commerce</h3>
+                    <p>Modern scalable platform with secure JWT authentication.</p>
+                    <div class="tech-tags">Django REST • React</div>
+                    <div class="project-links"><a href="#">Code</a><a href="#">Live</a></div>
                 </div>
-
                 <div class="project-card">
-                    <div>
-                        <h3>Vim-DR (Medical AI)</h3>
-                        <p>High-resolution Vision Mamba architecture for efficient Diabetic Retinopathy grading on resource-constrained devices.</p>
-                        <div class="tech-tags">Python • PyTorch • Vision Mamba</div>
-                    </div>
+                    <h3>Vim-DR (Medical AI)</h3>
+                    <p>Vision Mamba architecture for Diabetic Retinopathy grading.</p>
+                    <div class="tech-tags">PyTorch • Vision Mamba</div>
                 </div>
-
-                <div class="project-card">
-                    <div>
-                        <h3>Nexus-AI Platform</h3>
-                        <p>A futuristic AI landing page featuring glassmorphism UI and smooth animations with Framer Motion.</p>
-                        <div class="tech-tags">React.js • Tailwind CSS • Vite</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/mdshahadathossainit/nexus-ai-project" target="_blank">Code</a>
-                        <a href="https://nexus-ai-project.vercel.app/" target="_blank">Live Demo</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div>
-                        <h3>Research Hub</h3>
-                        <p>Centralized platform for researchers to manage, archive, and publish scientific papers.</p>
-                        <div class="tech-tags">Django REST • React • PostgreSQL</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/mdshahadathossainit/research-hub" target="_blank">Code</a>
-                        <a href="https://research-hub-kappa.vercel.app/" target="_blank">Live</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div>
-                        <h3>EduBridge LMS</h3>
-                        <p>Learning management system connecting students to resources with course enrollment features.</p>
-                        <div class="tech-tags">Django • SQLite • Bootstrap 5</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/mdshahadathossainit/edubridge-project.git" target="_blank">Code</a>
-                        <a href="https://mdshahadathossainit.pythonanywhere.com" target="_blank">Live</a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <section id="contact">
-            <div class="contact-info">
-                <h2>Let's Connect</h2>
-                <p>Interested in collaborating or hiring? I'm open to remote opportunities.</p>
-                <p style="margin-bottom: 20px;">
-                    <strong>Email:</strong> m.shahadat.hossain.it@gmail.com <br>
-                    <strong>GitHub:</strong> github.com/mdshahadathossainit
-                </p>
-                <a href="https://limewire.com/d/BTVD4#vLPsZNeRp9" class="btn-main" target="_blank">Download Resume</a>
-            </div>
+        <section id="contact" style="text-align: center;">
+            <h2>Let's Connect</h2>
+            <p>Email: m.shahadat.hossain.it@gmail.com</p>
+            <a href="#" class="btn-main" style="display:inline-block; padding: 15px 30px; background: var(--primary-gradient); color: #fff; border-radius: 50px; text-decoration: none;">Download Resume</a>
         </section>
-
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 MD SHAHADAT HOSSAIN. Built with Passion & Code.</p>
-            <p style="font-size: 0.85em; opacity: 0.8;">Python | Django | AI & ML Specialist</p>
-        </div>
+        <p>&copy; 2026 Md Shahadat Hossain. Built with Passion.</p>
     </footer>
 
     <script>
-        // --- Init Lucide Icons ---
         lucide.createIcons();
 
-        // --- Theme Switcher ---
         function setTheme(themeName, btn) {
             document.body.setAttribute('data-theme', themeName);
             document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
 
-        // --- AI Assistant Logic ---
-        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; 
-        const chatInput = document.getElementById('chatInput');
-        const chatMessages = document.getElementById('chatMessages');
-
         function toggleChat() {
             const chat = document.getElementById('aiChat');
             chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        async function callGemini(prompt) {
-            if (!apiKey) {
-                return "Technical Note: No API key detected. Please check the script section.";
-            }
+        // --- FIXED AI LOGIC ---
+        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; 
 
+        async function callGemini(userInput) {
+            // Using v1beta for better system instruction support via prompt
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
-            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-            const systemPrompt = "You are the AI Assistant for MD SHAHADAT HOSSAIN, a Software Engineer. " + 
-                               "His skills: Python, Django, React, AI/ML, Vision Mamba (Medical AI). " +
-                               "His projects: Vim-DR, Full-Stack E-Commerce, Nexus-AI, Research Hub, EduBridge LMS. " +
-                               "Respond professionally and concisely in English only. Do not use any other language.";
+            const systemContext = "You are the AI Assistant for Md Shahadat Hossain, a Software Engineer. Skills: Python, Django, AI/ML. Respond professionally and concisely.";
             
             const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
+                contents: [{
+                    parts: [{ text: `${systemContext}\nUser: ${userInput}` }]
+                }]
             };
 
-            let delay = 1000;
-            for (let i = 0; i < 5; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        const err = await response.json();
-                        console.error('Gemini API Error Detail:', err);
-                        throw new Error(`API Error: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "I am currently unable to process your request.";
-                } catch (e) {
-                    console.error(`Retry ${i+1} failed:`, e);
-                    if (i === 4) return "I am experiencing network difficulties. Please check if 'Generative Language API' is enabled in your Google Cloud Project.";
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2;
-                }
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error?.message || "API Error");
+                
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error("Gemini Error:", error);
+                return "I'm having trouble connecting right now. Please check the API configuration.";
             }
         }
 
@@ -483,13 +344,9 @@
             thinkingDiv.innerText = 'Thinking...';
             thinkingDiv.id = 'thinking-indicator';
             chatMessages.appendChild(thinkingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
 
             const response = await callGemini(text);
-            
-            const indicator = document.getElementById('thinking-indicator');
-            if (indicator) indicator.remove();
-
+            document.getElementById('thinking-indicator').remove();
             addMessage(response, 'bot');
         }
 
