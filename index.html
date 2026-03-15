@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Md Shahadath Hossain - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -13,6 +15,25 @@
             --bg-color: #f0f4f8;
             --text-main: #2d3436;
             --card-bg: #ffffff;
+            --border-color: #eef2f7;
+        }
+
+        /* Night/OLED Theme */
+        [data-theme="night"] {
+            --bg-color: #020617;
+            --text-main: #f8fafc;
+            --card-bg: #0f172a;
+            --border-color: #1e293b;
+        }
+
+        /* Cyber/Hacker Theme */
+        [data-theme="cyber"] {
+            --bg-color: #000000;
+            --text-main: #00ff41;
+            --card-bg: #050505;
+            --border-color: #00ff41;
+            --primary-gradient: linear-gradient(180deg, #000 0%, #050505 100%);
+            --secondary-gradient: linear-gradient(180deg, #008f11 0%, #00ff41 100%);
         }
 
         @keyframes fadeIn {
@@ -20,41 +41,50 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- Morphing Blob Animation --- */
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: all 0.3s ease;
         }
+
+        [data-theme="cyber"] body { font-family: 'JetBrains Mono', monospace; }
 
         header {
             background: var(--primary-gradient);
             color: #fff;
-            padding: 100px 0 140px 0; /* Padding adjusted for clip-path */
+            padding: 100px 0 140px 0;
             text-align: center;
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
 
+        [data-theme="cyber"] header { clip-path: none; border-bottom: 2px solid #00ff41; }
+
         .profile-img {
             width: 180px;
             height: 180px;
-            border-radius: 50%;
             border: 5px solid rgba(255, 255, 255, 0.3);
             margin-bottom: 20px;
             object-fit: cover;
-            animation: float 4s ease-in-out infinite;
+            animation: morph 8s ease-in-out infinite, float 4s ease-in-out infinite;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
@@ -73,6 +103,19 @@
             margin: 0 auto;
         }
 
+        /* --- Theme Switcher --- */
+        .theme-panel {
+            position: fixed; top: 20px; right: 20px; z-index: 2000;
+            background: var(--card-bg); padding: 5px; border-radius: 50px;
+            display: flex; gap: 5px; border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .theme-btn {
+            width: 35px; height: 35px; border-radius: 50%; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; color: var(--text-main); background: transparent;
+        }
+        .theme-btn.active { background: var(--secondary-gradient); color: #fff; }
+
         nav {
             background: rgba(118, 75, 162, 0.95);
             backdrop-filter: blur(10px);
@@ -85,36 +128,18 @@
         }
 
         nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            border-bottom: 2px solid transparent;
-            font-size: 0.9em;
+            color: #fff; text-decoration: none; padding: 8px 15px; margin: 0 5px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; border-bottom: 2px solid transparent; font-size: 0.9em;
         }
+        nav a:hover { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
 
-        nav a:hover {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         section {
-            background: var(--card-bg);
-            margin-bottom: 60px;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            animation: fadeIn 1s ease-out;
+            background: var(--card-bg); margin-bottom: 60px; padding: 50px;
+            border-radius: 20px; border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); animation: fadeIn 1s ease-out;
         }
 
         section h2 {
@@ -122,132 +147,94 @@
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            display: inline-block;
-            border-bottom: 3px solid #6a11cb;
+            font-size: 2.2em; margin-bottom: 30px;
+            display: inline-block; border-bottom: 3px solid #6a11cb;
         }
 
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px;
         }
 
         .skills-grid span {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-align: center;
-            border: 2px solid #eef2f7;
-            transition: all 0.3s ease;
-            color: #555;
-            cursor: default;
+            background: var(--card-bg); padding: 15px; border-radius: 12px;
+            font-weight: 700; text-align: center; border: 2px solid var(--border-color);
+            transition: all 0.3s ease; color: var(--text-main); cursor: default;
         }
 
         .skills-grid span:hover {
-            border-color: #764ba2;
-            color: #764ba2;
-            transform: scale(1.05);
+            border-color: #764ba2; color: #764ba2; transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(118, 75, 162, 0.1);
         }
 
         .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
         }
 
         .project-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid #f0f0f0;
-            position: relative;
-            transition: 0.4s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background: var(--card-bg); border-radius: 15px; padding: 30px;
+            border: 1px solid var(--border-color); position: relative;
+            transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between;
         }
 
         .project-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
             background: var(--secondary-gradient);
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-        .project-card h3 {
-            color: #4834d4;
-            margin-top: 0;
-            font-size: 1.4em;
-        }
+        .project-card h3 { color: #4834d4; margin-top: 0; font-size: 1.4em; }
+        [data-theme="cyber"] .project-card h3 { color: #00ff41; }
 
         .tech-tags {
-            font-size: 0.8em;
-            color: #667eea;
-            font-weight: bold;
-            margin: 15px 0;
-            background: #f1f3ff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .project-links {
-            margin-top: auto;
-            padding-top: 15px;
+            font-size: 0.8em; color: #667eea; font-weight: bold; margin: 15px 0;
+            background: rgba(102, 126, 234, 0.1); padding: 5px 10px; border-radius: 5px; display: inline-block;
         }
 
         .project-links a {
-            display: inline-block;
-            margin-right: 10px;
-            text-decoration: none;
-            color: #fff;
-            background: var(--secondary-gradient);
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 0.85em;
-            transition: 0.3s;
-        }
-
-        .project-links a:hover {
-            opacity: 0.9;
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+            display: inline-block; margin-right: 10px; text-decoration: none; color: #fff;
+            background: var(--secondary-gradient); padding: 8px 18px; border-radius: 25px;
+            font-size: 0.85em; transition: 0.3s;
         }
 
         .contact-info { text-align: center; }
         
         .btn-main {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--primary-gradient);
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
-            transition: 0.3s;
-            margin-top: 20px;
+            display: inline-block; padding: 15px 40px; background: var(--primary-gradient);
+            color: #fff; border-radius: 50px; text-decoration: none; font-weight: bold;
+            font-size: 1.1em; box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
+            transition: 0.3s; margin-top: 20px;
         }
 
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(118, 75, 162, 0.4);
+        /* --- ✨ AI Chat Assistant UI --- */
+        .ai-fab {
+            position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
+            border-radius: 50%; background: var(--secondary-gradient); color: white;
+            border: none; cursor: pointer; z-index: 2000; display: flex;
+            align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
+        .ai-fab:hover { transform: scale(1.1); }
+
+        .chat-box {
+            position: fixed; bottom: 100px; left: 30px; width: 350px; height: 450px;
+            background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border-color);
+            display: none; flex-direction: column; z-index: 1999;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); overflow: hidden;
+        }
+
+        .chat-header { padding: 15px; background: var(--primary-gradient); color: white; font-weight: 700; display: flex; justify-content: space-between; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .chat-input-area { padding: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 10px; }
+        .chat-input-area input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); }
+        .chat-input-area button { background: var(--primary-gradient); border: none; color: white; padding: 10px; border-radius: 10px; cursor: pointer; }
+
+        .msg { padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
+        .msg.bot { background: var(--bg-color); align-self: flex-start; }
+        .msg.user { background: var(--primary-gradient); color: white; align-self: flex-end; }
 
         footer {
-            background: #1a1c3d;
-            color: #dff9fb;
-            text-align: center;
-            padding: 60px 0 30px 0;
+            background: #1a1c3d; color: #dff9fb; text-align: center; padding: 60px 0 30px 0;
             clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
         }
 
@@ -257,10 +244,34 @@
             section { padding: 25px; }
             .projects-container { grid-template-columns: 1fr; }
             nav a { padding: 8px 10px; font-size: 0.8em; }
+            .chat-box { width: calc(100% - 60px); }
         }
     </style>
 </head>
-<body>
+<body data-theme="modern">
+
+    <!-- Theme Panel -->
+    <div class="theme-panel">
+        <button class="theme-btn active" onclick="setTheme('modern', this)" title="Modern"><i data-lucide="palette"></i></button>
+        <button class="theme-btn" onclick="setTheme('night', this)" title="Night"><i data-lucide="moon"></i></button>
+        <button class="theme-btn" onclick="setTheme('cyber', this)" title="Cyber"><i data-lucide="terminal"></i></button>
+    </div>
+
+    <!-- AI FAB -->
+    <button class="ai-fab" onclick="toggleChat()"><i data-lucide="sparkles"></i></button>
+    <div class="chat-box" id="aiChat">
+        <div class="chat-header">
+            <span>✨ Shahadath's Co-Pilot</span>
+            <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">আসসালামু আলাইকুম! আমি শাহাদাতের AI সহকারী। তার ক্যারিয়ার বা প্রজেক্ট নিয়ে কোনো প্রশ্ন আছে?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendPrompt()">
+            <button onclick="sendPrompt()"><i data-lucide="send"></i></button>
+        </div>
+    </div>
 
     <header id="home">
         <div class="container">
@@ -283,11 +294,11 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
-                <p style="font-size: 1.1em; color: #444;">
+                <p style="font-size: 1.1em; color: var(--text-main);">
                     Hello! I’m <strong>Md Shahadath Hossain</strong>, a dedicated <strong>Software Engineer</strong> and <strong>Full-Stack Developer</strong> with a passion for <strong>AI/ML & Computer Vision</strong>. 
                     I specialize in architecting high-performance web applications using the <strong>Python (Django, FastAPI)</strong> and <strong>React</strong> ecosystem.
                 </p>
-                <p style="font-size: 1.1em; color: #444;">
+                <p style="font-size: 1.1em; color: var(--text-main);">
                     Currently, I am working on my thesis <strong>Vim-DR</strong>, focusing on Vision Mamba architecture for efficient Diabetic Retinopathy grading. I combine my technical skills with <strong>Graphics Design</strong> experience to create software that is both powerful and visually compelling.
                 </p>
             </div>
@@ -396,5 +407,76 @@
         </div>
     </footer>
 
+    <script>
+        // --- Init Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Theme Switcher ---
+        function setTheme(themeName, btn) {
+            document.body.setAttribute('data-theme', themeName);
+            document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // --- AI Assistant Logic ---
+        const apiKey = ""; // Provisioned environment key
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function toggleChat() {
+            const chat = document.getElementById('aiChat');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        async function callGemini(prompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const systemPrompt = "You are the AI Assistant for Md Shahadath Hossain, a Software Engineer. " + 
+                               "His skills: Python, Django, React, AI/ML, Vision Mamba (Medical AI). " +
+                               "His projects: Vim-DR, Full-Stack E-Commerce, Nexus-AI, Research Hub, EduBridge LMS. " +
+                               "Respond professionally and concisely in a mix of Bengali and English as appropriate.";
+            
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            let delay = 1000;
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Error');
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm having trouble thinking right now.";
+                } catch (e) {
+                    if (i === 4) return "Connection issue. Please try again later.";
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        async function sendPrompt() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            chatInput.value = '';
+
+            const response = await callGemini(text);
+            addMessage(response, 'bot');
+        }
+
+        function addMessage(text, role) {
+            const div = document.createElement('div');
+            div.className = `msg ${role}`;
+            div.innerText = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
 </body>
 </html>
