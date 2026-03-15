@@ -246,10 +246,10 @@
         const chatMessages = document.getElementById('chatMessages');
 
         async function callGemini(input) {
-            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{
-                    parts: [{ text: `You are the AI for Md Shahadat Hossain. Answer professionally. User: ${input}` }]
+                    parts: [{ text: `You are the AI for Md Shahadat Hossain. Answer professionally and concisely. User: ${input}` }]
                 }]
             };
 
@@ -260,7 +260,7 @@
                     body: JSON.stringify(payload)
                 });
                 const data = await response.json();
-                if (!response.ok) return "API Error: Ensure you are running from a permitted domain.";
+                if (!response.ok) return "Error: " + (data.error?.message || "Check API settings.");
                 return data.candidates[0].content.parts[0].text;
             } catch (e) {
                 return "Connection error. Check your internet.";
@@ -282,7 +282,8 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             const res = await callGemini(val);
-            document.getElementById('temp-msg').remove();
+            const temp = document.getElementById('temp-msg');
+            if (temp) temp.remove();
             addMessage(res, 'bot');
         }
 
