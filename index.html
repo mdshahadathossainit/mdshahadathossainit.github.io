@@ -15,7 +15,6 @@
             --card-bg: #ffffff;
         }
 
-        /* Basic Setup & Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,13 +35,13 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Animated Header */
         header {
             background: var(--primary-gradient);
             color: #fff;
-            padding: 100px 0;
+            padding: 100px 0 140px 0; /* Padding adjusted for clip-path */
             text-align: center;
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
@@ -70,9 +69,10 @@
             font-size: 1.3em;
             font-weight: 300;
             opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* Navigation */
         nav {
             background: rgba(118, 75, 162, 0.95);
             backdrop-filter: blur(10px);
@@ -87,13 +87,14 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            padding: 8px 20px;
-            margin: 0 10px;
+            padding: 8px 15px;
+            margin: 0 5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
             border-bottom: 2px solid transparent;
+            font-size: 0.9em;
         }
 
         nav a:hover {
@@ -107,11 +108,10 @@
             padding: 40px 20px;
         }
 
-        /* Section Styling */
         section {
             background: var(--card-bg);
-            margin-bottom: 40px;
-            padding: 40px;
+            margin-bottom: 60px;
+            padding: 50px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             animation: fadeIn 1s ease-out;
@@ -122,13 +122,12 @@
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 30px;
             display: inline-block;
             border-bottom: 3px solid #6a11cb;
         }
 
-        /* Skills Multi-color Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -141,19 +140,19 @@
             border-radius: 12px;
             font-weight: 700;
             text-align: center;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #eef2f7;
             transition: all 0.3s ease;
             color: #555;
+            cursor: default;
         }
 
         .skills-grid span:hover {
             border-color: #764ba2;
             color: #764ba2;
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.2);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.1);
         }
 
-        /* Project Cards Layout */
         .projects-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -164,12 +163,12 @@
             background: #fff;
             border-radius: 15px;
             padding: 30px;
-            border: 1px solid #eee;
+            border: 1px solid #f0f0f0;
             position: relative;
             transition: 0.4s;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card::before {
@@ -187,34 +186,42 @@
         .project-card h3 {
             color: #4834d4;
             margin-top: 0;
+            font-size: 1.4em;
         }
 
         .tech-tags {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #667eea;
             font-weight: bold;
             margin: 15px 0;
+            background: #f1f3ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .project-links {
+            margin-top: auto;
+            padding-top: 15px;
         }
 
         .project-links a {
             display: inline-block;
-            margin-top: 15px;
-            margin-right: 15px;
+            margin-right: 10px;
             text-decoration: none;
             color: #fff;
             background: var(--secondary-gradient);
             padding: 8px 18px;
             border-radius: 25px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             transition: 0.3s;
         }
 
         .project-links a:hover {
-            opacity: 0.8;
+            opacity: 0.9;
             box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
         }
 
-        /* Contact & Buttons */
         .contact-info { text-align: center; }
         
         .btn-main {
@@ -228,6 +235,7 @@
             font-size: 1.1em;
             box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
             transition: 0.3s;
+            margin-top: 20px;
         }
 
         .btn-main:hover {
@@ -236,18 +244,19 @@
         }
 
         footer {
-            background: #30336b;
+            background: #1a1c3d;
             color: #dff9fb;
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0 30px 0;
             clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             header h1 { font-size: 2.2em; }
+            header { padding: 60px 0 100px 0; }
             section { padding: 25px; }
             .projects-container { grid-template-columns: 1fr; }
+            nav a { padding: 8px 10px; font-size: 0.8em; }
         }
     </style>
 </head>
@@ -255,9 +264,9 @@
 
     <header id="home">
         <div class="container">
-            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadath Hossain" class="profile-img">
+            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadath Hossain" class="profile-img" loading="lazy">
             <h1>Md Shahadath Hossain</h1>
-            <p>Software Developer | AI/ML & Computer Vision Specialist</p>
+            <p>Software Engineer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast</p>
         </div>
     </header>
 
@@ -272,42 +281,34 @@
     <div class="container">
         
         <section id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-        <p style="font-size: 1.1em; line-height: 1.8; color: #444;">
-            Hello! I’m <strong>Md Shahadath Hossain</strong>, a <strong>Software Engineer</strong> who loves the intersection of data and design. 
-            My journey in tech is driven by curiosity—whether it's architecting a complex LMS like <em>EduBridge</em> or training 
-            deep learning models for image classification. 
-        </p>
-        
-        <p style="font-size: 1.1em; line-height: 1.8; color: #444;">
-            I specialize in <strong>Python, Django, and FastAPI</strong>, with a strong command over frontend tools like 
-            <strong>React and Tailwind CSS</strong>. My unique background in <strong>graphics design</strong> allows me to view software 
-            through a dual lens: ensuring the engine under the hood is powerful, while the user interface remains seamless and engaging. 
-        </p>
-
-        <p style="font-size: 1.1em; line-height: 1.8; color: #444;">
-            I am constantly learning and adapting to new tech stacks like <strong>Docker and Cloud Scalability</strong> 
-            to build the next generation of software.
-        </p>
-    </div>
-</section>
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p style="font-size: 1.1em; color: #444;">
+                    Hello! I’m <strong>Md Shahadath Hossain</strong>, a dedicated <strong>Software Engineer</strong> and <strong>Full-Stack Developer</strong> with a passion for <strong>AI/ML & Computer Vision</strong>. 
+                    I specialize in architecting high-performance web applications using the <strong>Python (Django, FastAPI)</strong> and <strong>React</strong> ecosystem.
+                </p>
+                <p style="font-size: 1.1em; color: #444;">
+                    Currently, I am working on my thesis <strong>Vim-DR</strong>, focusing on Vision Mamba architecture for efficient Diabetic Retinopathy grading. I combine my technical skills with <strong>Graphics Design</strong> experience to create software that is both powerful and visually compelling.
+                </p>
+            </div>
+        </section>
 
         <section id="skills">
-            <h2>Tech Stack</h2>
+            <h2>Strategic Tech Stack</h2>
             <div class="skills-grid">
-                <span>Python</span>
-                <span>Django</span>
-                <span>TensorFlow</span>
-                <span>OpenCV</span>
-                <span>React.js</span>
-                <span>FastAPI</span>
-                <span>JavaScript</span>
-                <span>PostgreSQL</span>
-                <span>Docker</span>
-                <span>Git & GitHub</span>
-                <span>Tailwind CSS</span>
-                <span>Machine Learning</span>
+                <span title="Languages">Python</span>
+                <span title="Languages">JavaScript (ES6+)</span>
+                <span title="Languages">C Programming</span>
+                <span title="Backend">Django & DRF</span>
+                <span title="Backend">FastAPI</span>
+                <span title="Frontend">React.js</span>
+                <span title="Frontend">Tailwind CSS</span>
+                <span title="Databases">PostgreSQL</span>
+                <span title="DevOps">Docker</span>
+                <span title="Tools">Git & GitHub</span>
+                <span title="AI/ML">Machine Learning</span>
+                <span title="Computer Vision">OpenCV</span>
+                <span title="Deep Learning">TensorFlow</span>
             </div>
         </section>
 
@@ -316,15 +317,31 @@
             <div class="projects-container">
                 
                 <div class="project-card">
-                    <h3>Vim-DR (Medical AI)</h3>
-                    <p>High-resolution Vision Mamba architecture designed for efficient Diabetic Retinopathy grading on mobile/resource-constrained devices.</p>
-                    <div class="tech-tags">Python • PyTorch • Vision Mamba • AI</div>
+                    <div>
+                        <h3>Full-Stack E-Commerce</h3>
+                        <p>Modern scalable platform with secure JWT authentication, real-time cart, and order tracking.</p>
+                        <div class="tech-tags">Django REST • React • PostgreSQL</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdshahadathossainit/E-Commerce.git" target="_blank">Code</a>
+                        <a href="https://e-commerce-drab-iota-38.vercel.app/" target="_blank">Live Demo</a>
+                    </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Nexus-AI Platform</h3>
-                    <p>A futuristic AI landing page featuring glassmorphism UI, smooth animations, and optimized performance using Vite.</p>
-                    <div class="tech-tags">React.js • Tailwind CSS • Framer Motion</div>
+                    <div>
+                        <h3>Vim-DR (Medical AI)</h3>
+                        <p>High-resolution Vision Mamba architecture for efficient Diabetic Retinopathy grading on resource-constrained devices.</p>
+                        <div class="tech-tags">Python • PyTorch • Vision Mamba</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>Nexus-AI Platform</h3>
+                        <p>A futuristic AI landing page featuring glassmorphism UI and smooth animations with Framer Motion.</p>
+                        <div class="tech-tags">React.js • Tailwind CSS • Vite</div>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/mdshahadathossainit/nexus-ai-project" target="_blank">Code</a>
                         <a href="https://nexus-ai-project.vercel.app/" target="_blank">Live Demo</a>
@@ -332,9 +349,11 @@
                 </div>
 
                 <div class="project-card">
-                    <h3>Research Hub</h3>
-                    <p>A centralized platform for researchers to manage, archive, and publish scientific papers with a full-stack dashboard.</p>
-                    <div class="tech-tags">Django REST • React • PostgreSQL</div>
+                    <div>
+                        <h3>Research Hub</h3>
+                        <p>Centralized platform for researchers to manage, archive, and publish scientific papers.</p>
+                        <div class="tech-tags">Django REST • React • PostgreSQL</div>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/mdshahadathossainit/research-hub" target="_blank">Code</a>
                         <a href="https://research-hub-kappa.vercel.app/" target="_blank">Live</a>
@@ -342,9 +361,11 @@
                 </div>
 
                 <div class="project-card">
-                    <h3>EduBridge LMS</h3>
-                    <p>Learning management system that connects students to resources with progress tracking and course enrollment.</p>
-                    <div class="tech-tags">Django • SQLite • Bootstrap 5</div>
+                    <div>
+                        <h3>EduBridge LMS</h3>
+                        <p>Learning management system connecting students to resources with course enrollment features.</p>
+                        <div class="tech-tags">Django • SQLite • Bootstrap 5</div>
+                    </div>
                     <div class="project-links">
                         <a href="https://github.com/mdshahadathossainit/edubridge-project.git" target="_blank">Code</a>
                         <a href="https://mdshahadathossainit.pythonanywhere.com" target="_blank">Live</a>
@@ -357,12 +378,12 @@
         <section id="contact">
             <div class="contact-info">
                 <h2>Let's Connect</h2>
-                <p>Interested in collaborating or hiring for a remote internship?</p>
-                <p style="margin-bottom: 30px;">
+                <p>Interested in collaborating or hiring? I'm open to remote opportunities.</p>
+                <p style="margin-bottom: 20px;">
                     <strong>Email:</strong> m.shahadat.hossain.it@gmail.com <br>
-                    <strong>LinkedIn:</strong> mdshahadathossainit
+                    <strong>GitHub:</strong> github.com/mdshahadathossainit
                 </p>
-                <a href="https://raw.githubusercontent.com/mdshahadathossainit/my-cv/main/Md%20Shahadat%20Hossain%20Cv.pdf" class="btn-main" target="_blank">Download Resume</a>
+                <a href="https://limewire.com/d/BTVD4#vLPsZNeRp9" class="btn-main" target="_blank">Download Resume</a>
             </div>
         </section>
 
@@ -370,8 +391,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Md Shahadath Hossain. Created with Multi-color Gradient & Passion.</p>
-            <p style="font-size: 0.8em; opacity: 0.7;">Python | Django | AI Specialist</p>
+            <p>&copy; 2026 Md Shahadath Hossain. Built with Passion & Code.</p>
+            <p style="font-size: 0.85em; opacity: 0.8;">Python | Django | AI & ML Specialist</p>
         </div>
     </footer>
 
