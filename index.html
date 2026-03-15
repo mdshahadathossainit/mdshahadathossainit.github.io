@@ -261,11 +261,11 @@
     <button class="ai-fab" onclick="toggleChat()"><i data-lucide="sparkles"></i></button>
     <div class="chat-box" id="aiChat">
         <div class="chat-header">
-            <span>✨ Shahadath's Co-Pilot</span>
+            <span>✨ Shahadat's Assistant</span>
             <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">Hi! I am Shahadath's AI assistant. Do you have any questions about his career or projects?</div>
+            <div class="msg bot">Hi! I am Shahadat's AI assistant. Do you have any questions about his career or projects?</div>
         </div>
         <div class="chat-input-area">
             <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendPrompt()">
@@ -275,7 +275,7 @@
 
     <header id="home">
         <div class="container">
-            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadath Hossain" class="profile-img" loading="lazy">
+            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadat Hossain" class="profile-img" loading="lazy">
             <h1>Md Shahadath Hossain</h1>
             <p>Software Engineer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast</p>
         </div>
@@ -402,7 +402,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Md Shahadath Hossain.</p>
+            <p>&copy; 2026 Md Shahadat Hossain. Built with Passion & Code.</p>
             <p style="font-size: 0.85em; opacity: 0.8;">Python | Django | AI & ML Specialist</p>
         </div>
     </footer>
@@ -419,7 +419,7 @@
         }
 
         // --- AI Assistant Logic ---
-        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; // Updated Restricted API Key
+        const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; 
         const chatInput = document.getElementById('chatInput');
         const chatMessages = document.getElementById('chatMessages');
 
@@ -452,11 +452,18 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    if (!response.ok) throw new Error('API Error');
+                    
+                    if (!response.ok) {
+                        const err = await response.json();
+                        console.error('Gemini API Error Detail:', err);
+                        throw new Error(`API Error: ${response.status}`);
+                    }
+                    
                     const data = await response.json();
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "I am currently unable to process your request.";
                 } catch (e) {
-                    if (i === 4) return "I am experiencing network difficulties. Please try again later.";
+                    console.error(`Retry ${i+1} failed:`, e);
+                    if (i === 4) return "I am experiencing network difficulties. Please check your browser console (F12) for error details.";
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 }
