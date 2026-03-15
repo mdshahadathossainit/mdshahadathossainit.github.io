@@ -433,8 +433,8 @@
                 return "Technical Note: No API key detected. Please check the script section.";
             }
 
-            // Using stable model gemini-1.5-flash to avoid 404 preview issues
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            
+            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             const systemPrompt = "You are the AI Assistant for MD SHAHADAT HOSSAIN, a Software Engineer. " + 
                                "His skills: Python, Django, React, AI/ML, Vision Mamba (Medical AI). " +
                                "His projects: Vim-DR, Full-Stack E-Commerce, Nexus-AI, Research Hub, EduBridge LMS. " +
@@ -464,7 +464,7 @@
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "I am currently unable to process your request.";
                 } catch (e) {
                     console.error(`Retry ${i+1} failed:`, e);
-                    if (i === 4) return "I am experiencing network difficulties. Please check your browser console (F12) and ensure your API key is restricted correctly for this domain.";
+                    if (i === 4) return "I am experiencing network difficulties. Please check if 'Generative Language API' is enabled in your Google Cloud Project.";
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 }
