@@ -265,7 +265,10 @@
                     <h3>Full-Stack E-Commerce</h3>
                     <p>Modern scalable platform with secure JWT authentication.</p>
                     <div class="tech-tags">Django REST • React</div>
-                    <div class="project-links"><a href="#">Code</a><a href="#">Live</a></div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdshahadathossainit/E-Commerce.git" target="_blank">Code</a>
+                        <a href="https://e-commerce-drab-iota-38.vercel.app/" target="_blank">Live Demo</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <h3>Vim-DR (Medical AI)</h3>
@@ -278,7 +281,7 @@
         <section id="contact" style="text-align: center;">
             <h2>Let's Connect</h2>
             <p>Email: m.shahadat.hossain.it@gmail.com</p>
-            <a href="#" class="btn-main" style="display:inline-block; padding: 15px 30px; background: var(--primary-gradient); color: #fff; border-radius: 50px; text-decoration: none;">Download Resume</a>
+            <a href="https://limewire.com/d/BTVD4#vLPsZNeRp9" class="btn-main" style="display:inline-block; padding: 15px 30px; background: var(--primary-gradient); color: #fff; border-radius: 50px; text-decoration: none;">Download Resume</a>
         </section>
     </div>
 
@@ -302,10 +305,12 @@
 
         // --- FIXED AI LOGIC ---
         const apiKey = "AIzaSyAKf_GcxAgbWFzUGqzvUUPraom-7M-P4T0"; 
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
 
         async function callGemini(userInput) {
-            // Using v1beta for better system instruction support via prompt
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // Using v1 Endpoint which is more stable for flash models
+            const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const systemContext = "You are the AI Assistant for Md Shahadat Hossain, a Software Engineer. Skills: Python, Django, AI/ML. Respond professionally and concisely.";
             
@@ -323,12 +328,19 @@
                 });
                 
                 const data = await response.json();
-                if (!response.ok) throw new Error(data.error?.message || "API Error");
+                
+                if (!response.ok) {
+                    // API Restriction check
+                    if (data.error?.status === "PERMISSION_DENIED") {
+                        return "Error: API Key restriction active. Please check your Google Cloud settings.";
+                    }
+                    throw new Error(data.error?.message || "API Error");
+                }
                 
                 return data.candidates[0].content.parts[0].text;
             } catch (error) {
                 console.error("Gemini Error:", error);
-                return "I'm having trouble connecting right now. Please check the API configuration.";
+                return "I'm having trouble connecting. Ensure the API is enabled and your domain is allowed.";
             }
         }
 
@@ -344,9 +356,13 @@
             thinkingDiv.innerText = 'Thinking...';
             thinkingDiv.id = 'thinking-indicator';
             chatMessages.appendChild(thinkingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
 
             const response = await callGemini(text);
-            document.getElementById('thinking-indicator').remove();
+            
+            const indicator = document.getElementById('thinking-indicator');
+            if (indicator) indicator.remove();
+            
             addMessage(response, 'bot');
         }
 
