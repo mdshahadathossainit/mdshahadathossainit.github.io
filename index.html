@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Shahadath Hossain - Portfolio</title>
+    <title>MD SHAHADAT HOSSAIN - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -261,11 +261,11 @@
     <button class="ai-fab" onclick="toggleChat()"><i data-lucide="sparkles"></i></button>
     <div class="chat-box" id="aiChat">
         <div class="chat-header">
-            <span>✨ Shahadat's Assistant</span>
+            <span>✨ MD SHAHADAT HOSSAIN's Assistant</span>
             <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x"></i></button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot">Hi! I am Shahadat's AI assistant. Do you have any questions about his career or projects?</div>
+            <div class="msg bot">Hi! I am MD SHAHADAT HOSSAIN's AI assistant. Do you have any questions about his career or projects?</div>
         </div>
         <div class="chat-input-area">
             <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendPrompt()">
@@ -275,8 +275,8 @@
 
     <header id="home">
         <div class="container">
-            <img src="https://imgur.com/QJ2DFKH.jpg" alt="Md Shahadat Hossain" class="profile-img" loading="lazy">
-            <h1>Md Shahadath Hossain</h1>
+            <img src="https://imgur.com/QJ2DFKH.jpg" alt="MD SHAHADAT HOSSAIN" class="profile-img" loading="lazy">
+            <h1>MD SHAHADAT HOSSAIN</h1>
             <p>Software Engineer | Full-Stack Developer | AI/ML & Computer Vision Enthusiast</p>
         </div>
     </header>
@@ -295,7 +295,7 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <p style="font-size: 1.1em; color: var(--text-main);">
-                    Hello! I’m <strong>Md Shahadath Hossain</strong>, a dedicated <strong>Software Engineer</strong> and <strong>Full-Stack Developer</strong> with a passion for <strong>AI/ML & Computer Vision</strong>. 
+                    Hello! I’m <strong>MD SHAHADAT HOSSAIN</strong>, a dedicated <strong>Software Engineer</strong> and <strong>Full-Stack Developer</strong> with a passion for <strong>AI/ML & Computer Vision</strong>. 
                     I specialize in architecting high-performance web applications using the <strong>Python (Django, FastAPI)</strong> and <strong>React</strong> ecosystem.
                 </p>
                 <p style="font-size: 1.1em; color: var(--text-main);">
@@ -402,7 +402,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Md Shahadat Hossain. Built with Passion & Code.</p>
+            <p>&copy; 2026 MD SHAHADAT HOSSAIN. Built with Passion & Code.</p>
             <p style="font-size: 0.85em; opacity: 0.8;">Python | Django | AI & ML Specialist</p>
         </div>
     </footer>
@@ -433,8 +433,9 @@
                 return "Technical Note: No API key detected. Please check the script section.";
             }
 
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const systemPrompt = "You are the AI Assistant for Md Shahadath Hossain, a Software Engineer. " + 
+            // Using stable model gemini-1.5-flash to avoid 404 preview issues
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const systemPrompt = "You are the AI Assistant for MD SHAHADAT HOSSAIN, a Software Engineer. " + 
                                "His skills: Python, Django, React, AI/ML, Vision Mamba (Medical AI). " +
                                "His projects: Vim-DR, Full-Stack E-Commerce, Nexus-AI, Research Hub, EduBridge LMS. " +
                                "Respond professionally and concisely in English only. Do not use any other language.";
@@ -463,7 +464,7 @@
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "I am currently unable to process your request.";
                 } catch (e) {
                     console.error(`Retry ${i+1} failed:`, e);
-                    if (i === 4) return "I am experiencing network difficulties. Please check your browser console (F12) for error details.";
+                    if (i === 4) return "I am experiencing network difficulties. Please check your browser console (F12) and ensure your API key is restricted correctly for this domain.";
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 }
